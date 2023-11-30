@@ -9,6 +9,7 @@ import {
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { Alert } from "react-native";
 
 const ItemScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -21,7 +22,7 @@ const ItemScreen = ({ route }) => {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 bg-white relative">
+    <SafeAreaView className="flex-1 bg-white py-10 relative">
       <ScrollView className="flex-1 px-4 py-6">
         <View className="relative bg-white shadow-lg">
           <Image
@@ -39,10 +40,6 @@ const ItemScreen = ({ route }) => {
               className="w-10 h-10 rounded-md items-center justify-center bg-white"
             >
               <FontAwesome5 name="chevron-left" size={24} color="#06B2BE" />
-            </TouchableOpacity>
-
-            <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-[#06B2BE]">
-              <FontAwesome5 name="heartbeat" size={24} color="#fff" />
             </TouchableOpacity>
           </View>
 
@@ -153,11 +150,20 @@ const ItemScreen = ({ route }) => {
             </View>
           )}
 
-          <View className="mt-4 px-4 py-4 rounded-lg bg-[#06B2BE] items-center justify-center mb-12">
-            <Text className="text-3xl font-semibold uppercase tracking-wider text-gray-100">
-              Book Now
-            </Text>
-          </View>
+<TouchableOpacity
+  onPress={() => {
+    Alert.alert("Terima Kasih", "Pemesanan Anda telah diterima. Terima kasih!");
+  }}
+  style={{
+    marginTop: 20,
+    paddingTop: 10,
+    paddingBottom: 30,
+    backgroundColor: "#06B2BE",
+    alignItems: "center",
+  }}
+>
+  <Text style={{ fontSize: 18, color: "white" }}>Book Now</Text>
+</TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
